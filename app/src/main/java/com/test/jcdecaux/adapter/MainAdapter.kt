@@ -42,7 +42,10 @@ class MainAdapter(var items: List<Post>) : RecyclerView.Adapter<MainAdapter.Post
             var currentLatitude = 48.923030
             var currentLongitude = 2.032140
             if (getDistanceBetweenPoints(currentLatitude,currentLongitude,latitude,longitude)<10){
+                //val theThing: List<Post>
+                //get()=nearestPositionsList
                 nearestPositionsList.add(it)
+
             }
         }
 
@@ -64,6 +67,11 @@ class MainAdapter(var items: List<Post>) : RecyclerView.Adapter<MainAdapter.Post
                 val intent = Intent(context, DetailsActivity::class.java)
                 intent.putExtra("contract_name", item.contract_name)
                 intent.putExtra("address", item.address)
+                intent.putExtra("bike_stands", item.bike_stands)
+                intent.putExtra("available_bike_stands", item.available_bike_stands)
+                intent.putExtra("bonus", item.bonus)
+                intent.putExtra("banking", item.banking)
+                intent.putExtra("last_update", item.last_update)
                 // start your next activity
                 context.startActivity(intent)
             }

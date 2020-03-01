@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">jcdecauxTest</string>
+    <string name="app_name">jcdecauxTest :</string>
+    <string name="city">Ville:</string>
+    <string name="address">Adresse :</string>
+    <string name="bike_stands">Supports à vélo :</string>
+    <string name="available_bike_stands">Supports à vélos disponibles :</string>
+    <string name="bonus">Bonus :</string>
+    <string name="banking">Bancaire :</string>
+    <string name="last_update">Dernière mise à jour :</string>
 </resources>

@@ -11,10 +11,8 @@
         android:layout_width="146dp"
         android:layout_height="149dp"
         android:layout_marginStart="132dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="133dp"
-        android:layout_marginBottom="42dp"
-        app:layout_constraintBottom_toTopOf="@+id/title_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,30 +20,177 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/title_text"
+        android:id="@+id/title_city"
         android:layout_width="165dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="42dp"
-        android:text="title_text"
-        android:textSize="24sp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="city_txt"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/city_txt"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/address_text"
+        android:id="@+id/address_"
         android:layout_width="322dp"
-        android:layout_height="42dp"
+        android:layout_height="40dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="59dp"
         android:text="address_text"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text"
+        app:layout_constraintTop_toBottomOf="@+id/address_txt"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/city_txt"
+        android:layout_width="137dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/city"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/address_txt"
+        android:layout_width="138dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/address"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_city" />
+
+    <TextView
+        android:id="@+id/bike_stands_txt"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/bike_stands"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_" />
+
+    <TextView
+        android:id="@+id/bike_stands"
+        android:layout_width="165dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="bike_stands"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bike_stands_txt" />
+
+    <TextView
+        android:id="@+id/available_bike_stands_txt"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/available_bike_stands"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bike_stands" />
+
+    <TextView
+        android:id="@+id/available_bike_stands"
+        android:layout_width="165dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="available_bike_stands"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/available_bike_stands_txt" />
+
+    <TextView
+        android:id="@+id/bonus_txt"
+        android:layout_width="137dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/bonus"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/available_bike_stands" />
+
+    <TextView
+        android:id="@+id/bonus_"
+        android:layout_width="165dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="bonus"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bonus_txt" />
+
+    <TextView
+        android:id="@+id/banking_txt"
+        android:layout_width="137dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/banking"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bonus_" />
+
+    <TextView
+        android:id="@+id/banking_"
+        android:layout_width="165dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="banking"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banking_txt" />
+
+    <TextView
+        android:id="@+id/last_update_txt"
+        android:layout_width="137dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/last_update"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banking_" />
+
+    <TextView
+        android:id="@+id/last_update"
+        android:layout_width="165dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:text="last_update"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last_update_txt" />
 </androidx.constraintlayout.widget.ConstraintLayout>
