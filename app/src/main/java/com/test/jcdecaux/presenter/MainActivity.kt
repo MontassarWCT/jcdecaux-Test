@@ -11,14 +11,19 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.test.jcdecaux.JsonPositionHolderApi
-import com.test.jcdecaux.adapter.MainAdapter
-import com.test.jcdecaux.R
 import com.google.android.gms.location.*
+import com.google.android.gms.maps.model.LatLng
+import com.test.jcdecaux.JsonPositionHolderApi
+import com.test.jcdecaux.R
+import com.test.jcdecaux.adapter.MainAdapter
+import com.test.jcdecaux.model.Post
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlin.math.acos
+import kotlin.math.cos
+import kotlin.math.sin
 
 class MainActivity : Activity() {
 
@@ -30,7 +35,7 @@ class MainActivity : Activity() {
 
     private val jsonPlaceholderApi = JsonPositionHolderApi.getApi()
     private val adapter = MainAdapter(listOf())
-     var myCurrentLongitude: Double = 0.0
+    var myCurrentLongitude: Double = 0.0
     var myCurrentLatitude: Double = 0.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,14 +51,33 @@ class MainActivity : Activity() {
             val postsResponse = jsonPlaceholderApi.getPosts().await()
             progress.visibility = View.GONE
             if (postsResponse.isSuccessful) {
-                adapter.items = postsResponse.body() ?: listOf()
+
+                val items = postsResponse.body() ?: listOf()
+
+                val lngLatList = mutableListOf<Post>()
+                val nearestPositionsList = mutableListOf<Post>()
+
+                items.forEach {
+
+                    val latitude = it.position.lat
+                    val longitude = it.position.lng
+                    LatLng(latitude, longitude)
+                    lngLatList.add(it)
+
+                    // I will change it dynamic
+                    var currentLatitude = 48.923030
+                    var currentLongitude = 2.032140
+                    if (getDistanceBetweenPoints(currentLatitude, currentLongitude, latitude, longitude) < 10) {
+                        nearestPositionsList.add(it)
+                    }
+                }
+                adapter.items = nearestPositionsList
                 adapter.notifyDataSetChanged()
             } else {
                 Toast.makeText(this@MainActivity, "Error ${postsResponse.code()}", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 
     @SuppressLint("MissingPermission")
     //Start Location update as define intervals
@@ -84,9 +108,6 @@ class MainActivity : Activity() {
                 }
             }
 
-            override fun onLocationAvailability(p0: LocationAvailability?) {
-                super.onLocationAvailability(p0)
-            }
         },
                 Looper.myLooper())
 
@@ -112,6 +133,27 @@ class MainActivity : Activity() {
         ActivityCompat.requestPermissions(this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 FINE_LOCATION_REQUEST)
+    }
+
+    private fun getDistanceBetweenPoints(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
+        val theta = lon1 - lon2
+        var dist = (sin(deg2rad(lat1))
+                * sin(deg2rad(lat2))
+                + (cos(deg2rad(lat1))
+                * cos(deg2rad(lat2))
+                * cos(deg2rad(theta))))
+        dist = acos(dist)
+        dist = rad2deg(dist)
+        dist *= 60 * 1.1515
+        return dist
+    }
+
+    private fun deg2rad(deg: Double): Double {
+        return deg * Math.PI / 180.0
+    }
+
+    private fun rad2deg(rad: Double): Double {
+        return rad * 180.0 / Math.PI
     }
 
     companion object {

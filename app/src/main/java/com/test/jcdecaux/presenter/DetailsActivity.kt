@@ -20,25 +20,25 @@ class DetailsActivity : AppCompatActivity() {
         val address: String = intent.getStringExtra("address")
         address_.text = address
         //get bike stands
-        val bikeStands: Int = intent.getIntExtra("bike_stands",-1)
+        val bikeStands: Int = intent.getIntExtra("bike_stands", -1)
         bike_stands.text = bikeStands.toString()
         //get available bike stands
-        val availableBikeStands: Int = intent.getIntExtra("available_bike_stands",-1)
+        val availableBikeStands: Int = intent.getIntExtra("available_bike_stands", -1)
         available_bike_stands.text = availableBikeStands.toString()
         //get bonus
-        val bonus: Boolean = intent.getBooleanExtra("bike_stands",false)
+        val bonus: Boolean = intent.getBooleanExtra("bike_stands", false)
         if (!bonus)
             bonus_.text = "Non"
         else
             bonus_.text = "Oui"
         //get banking
-        val banking: Boolean = intent.getBooleanExtra("banking",false)
+        val banking: Boolean = intent.getBooleanExtra("banking", false)
         if (!bonus)
             banking_.text = "Non"
         else
             banking_.text = "Oui"
         //get last update
-        val lastUpdate: Long = intent.getLongExtra("last_update",0)
+        val lastUpdate: Long = intent.getLongExtra("last_update", 0)
         //convert Long to Date
         val date = Date(lastUpdate)
         val format = SimpleDateFormat("yyyy.MM.dd HH:mm")

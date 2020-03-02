@@ -1,6 +1,5 @@
 package com.test.jcdecaux.adapter
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.test.jcdecaux.R
 import com.test.jcdecaux.model.Post
 import com.test.jcdecaux.presenter.DetailsActivity
-import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.post_item.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.textColor
@@ -27,35 +25,13 @@ class MainAdapter(var items: List<Post>) : RecyclerView.Adapter<MainAdapter.Post
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PostHolder(LayoutInflater.from(parent.context).inflate(R.layout.post_item, parent, false))
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
-        val lngLatList = mutableListOf<Post>()
-        val nearestPositionsList = mutableListOf<Post>()
-
-
-        items.forEach {
-
-            val latitude = it.position.lat
-            val longitude = it.position.lng
-            LatLng(latitude, longitude)
-            lngLatList.add(it)
-
-            // I will change it dynamic
-            var currentLatitude = 48.923030
-            var currentLongitude = 2.032140
-            if (getDistanceBetweenPoints(currentLatitude,currentLongitude,latitude,longitude)<10){
-                //val theThing: List<Post>
-                //get()=nearestPositionsList
-                nearestPositionsList.add(it)
-
-            }
-        }
-
-        holder.bind(nearestPositionsList[position])
+        holder.bind(items[position])
     }
 
     inner class PostHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(item: Post) = with(itemView) {
             mStatus.text = item.status
-            if(item.status == "OPEN")
+            if (item.status == "OPEN")
                 mStatus.textColor = Color.GREEN
             else
                 mStatus.textColor = Color.RED
